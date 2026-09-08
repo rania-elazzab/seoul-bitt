@@ -8,7 +8,7 @@ import tteokbokki from "../images/tteokbokki.jpg";
 import kimbap from "../images/kimbap.jpg";
 import mandu from "../images/mandu.jpg";
 import strawberryMilk from "../images/strawberry-milk.jpg";
-import yujaTea from "../images/yuja-tea.jpg";
+const yujaTea = "https://placehold.co/300x200";
 import omijaTea from "../images/omija-tea.jpg";
 import bananaMilk from "../images/banana-milk.jpg";
 import koreanCornDog from "../images/korean-corn-dog.jpg";
