@@ -1,0 +1,332 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =========================================================
+   SEOUL-BIT · Design tokens (Tailwind v4 theme)
+========================================================= */
+
+:root {
+  /* Brand */
+  --cream: #f5f0e7;
+  --ink: #171512;
+  --red: #d52b2b;
+
+  --muted-warm: #77716a;
+  --cream-deep: #eee8dd;
+  --ink-soft: #221f1b;
+  --ink-card: #211f1b;
+  --line-soft: rgba(23, 21, 18, 0.14);
+  --line-dark: rgba(245, 240, 231, 0.14);
+
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-red: var(--red);
+
+  --color-background: var(--cream);
+  --color-foreground: var(--ink);
+  --color-card: var(--cream);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--cream);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--red);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--cream-deep);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--muted-warm);
+  --color-muted-foreground: var(--muted-warm);
+  --color-accent: var(--ink);
+  --color-accent-foreground: var(--cream);
+  --color-destructive: var(--red);
+  --color-border: var(--line-soft);
+  --color-input: var(--line-soft);
+  --color-ring: var(--red);
+
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--line-soft);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--red);
+    color: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .letter-tight {
+    letter-spacing: -0.03em;
+  }
+
+  /* Grain / paper texture overlay */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: radial-gradient(
+      rgba(23, 21, 18, 0.06) 1px,
+      transparent 1px
+    );
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+  }
+
+  /* Dot grid background */
+  .bg-dot-grid {
+    background-image: radial-gradient(
+      currentColor 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  /* Fade edge mask for marquees */
+  .fade-x {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+}
+
+/* =========================================================
+   Keyframes
+========================================================= */
+
+/* Chrome / Edge shine sweep */
+@keyframes shine-sweep {
+  from {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  to {
+    transform: translateX(220%) skewX(-12deg);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+/* Moving-border rotating conic gradient */
+@keyframes mb-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* BorderBeam overlay ring — paused until hovered */
+.border-beam-ring {
+  position: absolute;
+  inset: 0;
+  animation: mb-spin 7s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.group:hover .border-beam-ring,
+.is-running .border-beam-ring {
+  animation-play-state: running;
+  opacity: 1;
+}
+
+@keyframes sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.6) rotate(45deg);
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(var(--rotate, 0deg));
+  }
+  50% {
+    transform: translate(4px, -12px) rotate(var(--rotate, 0deg));
+  }
+}
+
+@keyframes scroll-pulse {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+/* Confirmation card pop in / out */
+@keyframes card-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes card-pop-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.94) translateY(8px);
+    filter: blur(3px);
+  }
+}
+
+.card-anim-in {
+  animation: card-pop-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.card-anim-out {
+  animation: card-pop-out 0.38s ease both;
+}
+
+/* =========================================================
+   Motion-safe component classes
+========================================================= */
+
+.marquee-track {
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.aurora-gradient {
+  background:
+    linear-gradient(120deg, rgba(213, 43, 43, 0.14), transparent 40%),
+    linear-gradient(-120deg, rgba(213, 43, 43, 0.1), transparent 40%);
+  background-size: 200% 200%, 200% 200%;
+  animation: aurora 18s ease-in-out infinite alternate;
+}
+
+.sparkle {
+  animation: sparkle-twinkle 3s ease-in-out infinite;
+}
+
+.float-y {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: float-slow 9s ease-in-out infinite;
+}
+
+.scroll-dot {
+  animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .aurora-gradient,
+  .border-beam-ring,
+  .sparkle,
+  .float-y,
+  .float-slow,
+  .scroll-dot,
+  .card-anim-in,
+  .card-anim-out {
+    animation: none;
+  }
+}
