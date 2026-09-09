@@ -330,3 +330,15 @@
     animation: none;
   }
 }
+
+/* =========================================================
+   Mobile / small-screen overrides
+   ========================================================= */
+
+@media (max-width: 639px) {
+  /* Keep floated elements from overflowing on small screens */
+  .float-y,
+  .float-slow {
+    display: none;
+  }
+}

@@ -97,7 +97,7 @@ function MenuSection({ onAdd }) {
           <Badge variant="cream" className="mb-6 text-[0.62rem]">
             ★ The Menu
           </Badge>
-          <h2 className="font-display text-[2.7rem] leading-[1] font-semibold tracking-tight text-cream sm:text-6xl lg:text-7xl">
+          <h2 className="font-display text-[2.2rem] leading-[1] font-semibold tracking-tight text-cream sm:text-6xl lg:text-7xl">
             Pick your <span className="text-red italic">Seoul-Bit.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-md text-pretty text-sm leading-relaxed text-cream/60">

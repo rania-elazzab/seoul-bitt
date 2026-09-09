@@ -25,7 +25,7 @@ const PILLARS = [
 
 function About() {
   return (
-    <section id="about" className="relative overflow-hidden py-24 lg:py-32">
+    <section id="about" className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
       <Sparkles count={10} className="top-10 right-0" color="#d52b2b" />
 
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
@@ -69,7 +69,7 @@ function About() {
             </p>
           </Reveal>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {PILLARS.map((pillar, i) => (
               <Reveal key={pillar.title} delay={i * 90}>
                 <div className="group rounded-xl border border-line-soft bg-cream-deep/70 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-red/40 hover:shadow-lg">

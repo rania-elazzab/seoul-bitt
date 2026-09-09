@@ -21,7 +21,7 @@ const HERO_TAGS = [
 
 function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden">
+    <section id="home" className="relative overflow-hidden max-w-full">
       {/* Background layers */}
       <AuroraBackground className="absolute inset-0" aria-hidden>
         <GridPattern
